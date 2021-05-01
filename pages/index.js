@@ -16,6 +16,10 @@ export default function Home(props) {
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+        />
       </Head>
 
       <Header />
