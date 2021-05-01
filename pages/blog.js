@@ -3,18 +3,18 @@ import styles from '../styles/Home.module.css';
 
 // The Storyblok Client
 import Storyblok from '../lib/storyblok';
-import useStoryblok from '../lib/storyblok-hook';
+// import useStoryblok from '../lib/storyblok-hook';
 import DynamicComponent from '../components/DynamicComponent';
 
-export default function Home(props) {
+export default function Blog({ story }) {
   // the Storyblok hook to enable live updates
-  const story = useStoryblok(props.story);
+  // const story = useStoryblok(props.story);
   console.log('story', story);
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -23,20 +23,23 @@ export default function Home(props) {
       </header>
 
       <main>
-        {story
-          ? story.content.body.map((blok) => (
-              <DynamicComponent blok={blok} key={blok._uid} />
-            ))
-          : null}
+        <ul>
+          {story
+            ? story.content.body.map((blok) => (
+                <DynamicComponent blok={blok} key={blok._uid} />
+              ))
+            : null}
+        </ul>
       </main>
     </div>
   );
 }
 
 export async function getStaticProps(context) {
-  let slug = 'home';
+  let slug = 'blog';
   let params = {
-    version: 'draft', // or 'published'
+    version: 'published', // or 'draft, published'
+    resolve_relations: 'blog-posts.posts',
   };
 
   if (context.preview) {

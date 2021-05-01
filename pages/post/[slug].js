@@ -6,7 +6,7 @@ import Storyblok from '../lib/storyblok';
 import useStoryblok from '../lib/storyblok-hook';
 import DynamicComponent from '../components/DynamicComponent';
 
-export default function Home(props) {
+export default function Post(props) {
   // the Storyblok hook to enable live updates
   const story = useStoryblok(props.story);
   console.log('story', story);
@@ -34,6 +34,7 @@ export default function Home(props) {
 }
 
 export async function getStaticProps(context) {
+  console.log('context', context.query);
   let slug = 'home';
   let params = {
     version: 'draft', // or 'published'
