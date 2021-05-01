@@ -1,10 +1,10 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 
 // The Storyblok Client
 import Storyblok from '../lib/storyblok';
 import useStoryblok from '../lib/storyblok-hook';
 import DynamicComponent from '../components/DynamicComponent';
+import Header from '../components/Header';
 
 export default function Home(props) {
   // the Storyblok hook to enable live updates
@@ -12,15 +12,13 @@ export default function Home(props) {
   console.log('story', story);
 
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header>
-        <h1>{story ? story.name : 'My Site'}</h1>
-      </header>
+      <Header />
 
       <main>
         {story

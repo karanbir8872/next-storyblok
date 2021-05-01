@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
 import DynamicComponent from '../components/DynamicComponent';
 import useStoryblok from '../lib/storyblok-hook';
 import Storyblok from '../lib/storyblok';
+import Header from '../components/Header';
 
 export default function Home(props) {
   // the Storyblok hook to enable live updates
@@ -10,15 +10,17 @@ export default function Home(props) {
   console.log('story', story);
 
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+        />
       </Head>
 
-      <header>
-        <h1>{story ? story.name : 'My Site'}</h1>
-      </header>
+      <Header />
 
       <main>
         {story

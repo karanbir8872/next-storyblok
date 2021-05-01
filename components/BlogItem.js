@@ -4,14 +4,14 @@ const BlogItem = ({ blok }) => {
   console.log('blog item', blok);
   return (
     <>
-      <h1 className="has-text-primary has-test-centered is-size-1">
+      <h1 className="has-text-primary has-text-centered is-size-1">
         {blok.title}
       </h1>
-      <div className="columns">
+      <div className="columns is-centered">
         {blok.posts &&
           blok.posts.map((item) => (
             <Link href={`/post/${item.slug}`} key={item.id}>
-              <div className="column">
+              <div className="column is-4">
                 <div className="card">
                   <div className="card-image">
                     <figure className="image is-4by3">

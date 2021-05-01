@@ -1,11 +1,14 @@
 import SbEditable from 'storyblok-react';
 import Teaser from './Teaser';
 import BlogItem from './BlogItem';
-
+import Gallery from './Gallery';
+import About from './About';
 // resolve Storyblok components to Next.js components
 const Components = {
   teaser: Teaser,
   'blog-posts': BlogItem,
+  about: About,
+  gallery: Gallery,
 };
 
 const DynamicComponent = ({ blok }) => {
