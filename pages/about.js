@@ -1,10 +1,8 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
-
-// The Storyblok Client
-import Storyblok from '../lib/storyblok';
-import useStoryblok from '../lib/storyblok-hook';
 import DynamicComponent from '../components/DynamicComponent';
+import useStoryblok from '../lib/storyblok-hook';
+import Storyblok from '../lib/storyblok';
 
 export default function Home(props) {
   // the Storyblok hook to enable live updates
@@ -34,20 +32,26 @@ export default function Home(props) {
 }
 
 export async function getStaticProps(context) {
-  const slug = 'home';
+  // the slug of the story
+  const slug = 'about';
+  // the storyblok params
   const params = {
     version: 'draft', // or 'published'
   };
-
+  // checks if Next.js is in preview mode
   if (context.preview) {
+    // loads the draft version
     params.version = 'draft';
+    // appends the cache version to get the latest content
     params.cv = Date.now();
   }
-
+  // loads the story from the Storyblok API
   const { data } = await Storyblok.get(`cdn/stories/${slug}`, params);
+  // return the story from Storyblok and whether preview mode is active
   return {
     props: {
       story: data ? data.story : false,
+
       preview: context.preview || false,
     },
     revalidate: 10,

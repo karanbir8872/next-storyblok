@@ -16,6 +16,10 @@ export default function Blog({ story }) {
       <Head>
         <title>Blog</title>
         <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css"
+        />
       </Head>
 
       <header>
@@ -36,8 +40,8 @@ export default function Blog({ story }) {
 }
 
 export async function getStaticProps(context) {
-  let slug = 'blog';
-  let params = {
+  const slug = 'blog';
+  const params = {
     version: 'published', // or 'draft, published'
     resolve_relations: 'blog-posts.posts',
   };
@@ -47,7 +51,7 @@ export async function getStaticProps(context) {
     params.cv = Date.now();
   }
 
-  let { data } = await Storyblok.get(`cdn/stories/${slug}`, params);
+  const { data } = await Storyblok.get(`cdn/stories/${slug}`, params);
   return {
     props: {
       story: data ? data.story : false,
