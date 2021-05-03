@@ -10,7 +10,7 @@ import Header from '../components/Header';
 export default function Blog({ story }) {
   // the Storyblok hook to enable live updates
   // const story = useStoryblok(props.story);
-  console.log('story', story);
+  console.log('storyData', story);
 
   return (
     <div className="container">
